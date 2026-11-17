@@ -1,0 +1,47 @@
+{
+  "status": "PASS",
+  "model_family": "native_0_6m",
+  "source": "https://github.com/vansharora665/Urban-Atlas-Final-Models",
+  "weights_sha256": "d8a7a6cb8e7ee39de2fceb736611ac025691987ff2fb7eb1f3784f9a36dd42e5",
+  "model_weights_unchanged": true,
+  "root_layout_cpu_load_check": {
+    "status": "PASS",
+    "model": "0.6 m Attention U-Net++ + CoANet Roads",
+    "checks": [
+      "Four-band attention U-Net++: strict restore / finite output",
+      "CoANet roads: strict restore / finite output"
+    ],
+    "accuracy_test": false,
+    "scope": "Checkpoint restoration and synthetic finite-output smoke checks only",
+    "original_components_verified": [
+      {
+        "path": "native_06m_specialist/runs/native06m_joint_attention_UNetPP_PILOT_v1_20261017_181224_319881/best_diagnostic_joint_PILOT.pt",
+        "sha256": "9eb3b960dde6228a943f0b58f614c952f5a284aab7115137a15138b3b0e6c5b0"
+      },
+      {
+        "path": "road_transfer_v5_mainroad_precision/experiments/precision_surface_512_v1/BEST_DEVELOPMENT_WEIGHTS.pt",
+        "sha256": "d75cc7608a3c7b49d8b1e5a8c1ec60c8e131ccadd3a617b42f19e3d985f2da5b"
+      },
+      {
+        "path": "native_06m_specialist/structured_zones_v1/context_head.pt",
+        "sha256": "e046dfab465c0c705b6cfd763f688caf9541fb08b6af1d2c963d4d008cb4565e"
+      },
+      {
+        "path": "native_06m_specialist/structured_zones_v1/urban_zone_head.pt",
+        "sha256": "ac39d24a8e136c0a9b3964bc5d39f88256472b55f1c3cb9461db0de4f57ff2d3"
+      }
+    ]
+  },
+  "original_tiff_and_vector_smoke_checks": {
+    "status": "PASS",
+    "strict_checkpoint_loading": [
+      "Four-band attention U-Net++: strict restore / finite output",
+      "CoANet roads: strict restore / finite output"
+    ],
+    "real_tiff_prediction": "PASS",
+    "exact_output_grid_and_class_schema": "PASS",
+    "requested_vector_archives": 2,
+    "shapefiles_with_sidecars": 6,
+    "independent_accuracy_evaluation": false
+  }
+}

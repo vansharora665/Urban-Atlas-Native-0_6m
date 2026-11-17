@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "display_name": "0.6 m Attention U-Net++ + CoANet Roads",
+  "architecture": "ResNet34 Attention U-Net++ (scSE) + CoANet road specialist",
+  "overall_accuracy": 89.73,
+  "overall_accuracy_scope": "Refined Pune development pixels; not independent unseen-city test accuracy",
+  "mean_iou": 65.03,
+  "metric_units": "percent",
+  "independent_test_accuracy": null,
+  "family": "native_0_6m",
+  "model_id": "native_06m_joint_attention_v1",
+  "resolution_m": 0.6,
+  "resolution_tolerance_m": 0.03,
+  "input_channels": 4,
+  "band_order": [
+    "blue",
+    "green",
+    "red",
+    "nir"
+  ],
+  "classes": {
+    "0": "Water Bodies",
+    "1": "Vehicle Roads",
+    "2": "Urban Built-up",
+    "3": "Barren / Empty Land",
+    "4": "Vegetation"
+  },
+  "num_classes": 5,
+  "ignore_index": 255,
+  "patch_size": 512,
+  "inference_stride": 384,
+  "weights_file": "model_weights.pth",
+  "weights_sha256": "d8a7a6cb8e7ee39de2fceb736611ac025691987ff2fb7eb1f3784f9a36dd42e5",
+  "weights_bytes": 342798144,
+  "weights_url": "https://github.com/vansharora665/Urban-Atlas-Final-Models/releases/download/v1.0.0/native_0_6m_model_weights.pth",
+  "checkpoint_format": "torch-safe original-component bundle; not a plain state_dict",
+  "requires_custom_loader": true,
+  "loader": "loader.py:load_model",
+  "predict_method": "predict_tif",
+  "supported_inputs": [
+    "projected metre-based GeoTIFF at the declared resolution"
+  ],
+  "requires_external_maps": false,
+  "training_data_included": false,
+  "source_components": [
+    {
+      "path": "native_06m_specialist/runs/native06m_joint_attention_UNetPP_PILOT_v1_20261017_181224_319881/best_diagnostic_joint_PILOT.pt",
+      "sha256": "9eb3b960dde6228a943f0b58f614c952f5a284aab7115137a15138b3b0e6c5b0"
+    },
+    {
+      "path": "road_transfer_v5_mainroad_precision/experiments/precision_surface_512_v1/BEST_DEVELOPMENT_WEIGHTS.pt",
+      "sha256": "d75cc7608a3c7b49d8b1e5a8c1ec60c8e131ccadd3a617b42f19e3d985f2da5b"
+    },
+    {
+      "path": "native_06m_specialist/structured_zones_v1/context_head.pt",
+      "sha256": "e046dfab465c0c705b6cfd763f688caf9541fb08b6af1d2c963d4d008cb4565e"
+    },
+    {
+      "path": "native_06m_specialist/structured_zones_v1/urban_zone_head.pt",
+      "sha256": "ac39d24a8e136c0a9b3964bc5d39f88256472b55f1c3cb9461db0de4f57ff2d3"
+    }
+  ],
+  "limitations": [
+    "Research prototype; no arbitrary-location accuracy guarantee",
+    "Unknown/cloud/no-data remain distinct",
+    "Road surfaces are not a validated navigation graph"
+  ],
+  "licence_note": "Academic/non-commercial research only for the included CoANet dependency; retain upstream notices; not commercially cleared",
+  "road_specialist": {
+    "architecture": "CoANet",
+    "threshold": 0.1,
+    "patch_size": 768,
+    "stride": 576,
+    "local_development_road_iou": 41.25,
+    "local_scope": "Three reused development crops, not blind test data",
+    "external_pilot_road_iou": 48.95,
+    "external_scope": "48 frozen LoveDA public validation tiles; not the full benchmark",
+    "output_policy": "Separate road-surface layer; does not silently overwrite five-class labels"
+  },
+  "repository_url": "https://github.com/vansharora665/Urban-Atlas-Native-0_6m",
+  "weights_mirror_note": "The existing verified combined-release download remains a checksum-pinned fallback; this repository also stores the actual weights via Git LFS."
+}

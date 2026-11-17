@@ -1,0 +1,23 @@
+{
+  "source_checkpoint_sha256": "9eb3b960dde6228a943f0b58f614c952f5a284aab7115137a15138b3b0e6c5b0",
+  "selected_road_recipe": "strong_supported",
+  "selected_cleanup_recipe": "compact",
+  "continuity_recipe": null,
+  "strict_dot_extent_m": null,
+  "maximum_gap_m": 1.8,
+  "selection_evidence": "config/native_dot_stability_selection.json",
+  "scope": "Four Pune central and four already inspected Chennai development/regression crops, not a blind test or full-scene accuracy estimate.",
+  "neural_weights_changed": false,
+  "fine_tuned_candidates_deployed": false,
+  "decision": "Shortest supported repair that improves road IoU, precision and recall in both locations. Reject aggressive gap filling and indiscriminate singleton deletion.",
+  "tradeoff": "Pune overall accuracy 89.7624% to 89.7275%; Chennai 77.9680% to 77.9140%. Chennai mean IoU drops 0.0376 percentage point. Road improvement is small, not reliable highway extraction.",
+  "rules": {
+    "minimum_road_probability": 0.2,
+    "minimum_road_to_alternative_ratio": 0.4,
+    "aligned_endpoint_run_pixels_each_side": 3,
+    "eligible_gap_classes": [2, 3],
+    "protect_water_vegetation_unknown": true,
+    "recursive_bridging": false,
+    "road_area_quota": null
+  }
+}

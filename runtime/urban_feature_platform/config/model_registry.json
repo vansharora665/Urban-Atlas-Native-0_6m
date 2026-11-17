@@ -1,0 +1,13 @@
+[
+  {
+    "id": "native_06m_joint_attention_v1",
+    "display_name": "0.6 m Four-Band Attention U-Net++ + Short-Gap Roads V3 (Testing)",
+    "model_type": "native_06m",
+    "auto_select": true,
+    "summary_path": "config/active_model_summary.json",
+    "model_path": "../native_06m_specialist/runs/native06m_joint_attention_UNetPP_PILOT_v1_20261017_181224_319881/best_diagnostic_joint_PILOT.pt",
+    "patch_size": 512,
+    "enabled": true,
+    "priority": 250
+  }
+]

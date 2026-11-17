@@ -1,0 +1,70 @@
+{
+  "dataset_name": "CARTOSAT-2E 0.6 m B/G/R/NIR specialist",
+  "classes": {
+    "0": "Water Bodies",
+    "1": "Roads",
+    "2": "Urban Built-up",
+    "3": "Barren / Empty Land",
+    "4": "Vegetation"
+  },
+  "class_colors": {
+    "0": [
+      36,
+      123,
+      170
+    ],
+    "1": [
+      229,
+      80,
+      57
+    ],
+    "2": [
+      242,
+      204,
+      12
+    ],
+    "3": [
+      155,
+      104,
+      84
+    ],
+    "4": [
+      44,
+      140,
+      74
+    ]
+  },
+  "metrics": {
+    "val_accuracy": 0.8972745557998062,
+    "mean_iou": 0.6503356346258788
+  },
+  "base_metrics": {
+    "val_accuracy": 0.8962319824139509,
+    "mean_iou": 0.6465216951842983
+  },
+  "primary_metric_label": "Refined Pune development accuracy",
+  "secondary_metric_label": "Refined Pune development mean IoU",
+  "pipeline_version": "native06m_supported_short_gaps_v3",
+  "validation_scope": "Sparse reviewed Pune central pixels. Chennai was also inspected for regression selection, not a blind test. Coverage percentages are not accuracy.",
+  "experimental_testing_enabled": true,
+  "training_complete": false,
+  "checkpoint_sha256": "9eb3b960dde6228a943f0b58f614c952f5a284aab7115137a15138b3b0e6c5b0",
+  "source_manifest": "../native_06m_specialist/config/multispectral_scenes.json",
+  "refinement_validation_path": "config/native_refinement_short_gaps_v3.json",
+  "inference_stride": 384,
+  "road_validation": {
+    "scope": "Eight previously inspected development/regression crops; no independent blind-test claim",
+    "pune_road_iou_before": 0.07033845048927193,
+    "pune_road_iou_after": 0.07203728362183755,
+    "pune_road_recall_before": 0.20028118609406953,
+    "pune_road_recall_after": 0.20743865030674846,
+    "chennai_road_iou_before": 0.030751148626990063,
+    "chennai_road_iou_after": 0.03100004232087689,
+    "chennai_road_recall_before": 0.07748640353238921,
+    "chennai_road_recall_after": 0.0788864358408271,
+    "retrained_road_weights_deployed": false,
+    "reason": "Road-only fine-tunes failed the Chennai non-regression check; keep original five-class weights. This is bounded post-processing, not new training."
+  },
+  "input_requirements": "0.6 m B/G/R/NIR TIFF, or unchanged band/crop from the three locally registered products; companion bands recovered only after pixel/grid verification.",
+  "warning": "Experimental: road quality remains poor. Short supported gap repair gives only a small improvement, not reliable highway extraction. Fine-tuned road candidates were rejected for cross-city regression. Overall accuracy decreased by less than 0.06 percentage point on the inspected crops. More correctly traced road labels are needed."
+}
